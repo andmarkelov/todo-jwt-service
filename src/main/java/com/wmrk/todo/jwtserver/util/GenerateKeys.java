@@ -1,4 +1,4 @@
-package com.wmrk.jwtserver.util;
+package com.wmrk.todo.jwtserver.util;
 
 import io.jsonwebtoken.SignatureAlgorithm;
 import io.jsonwebtoken.io.Encoders;

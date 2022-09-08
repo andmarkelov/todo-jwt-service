@@ -1,4 +1,4 @@
-package com.wmrk.jwtserver.jwt;
+package com.wmrk.todo.jwtserver.jwt;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

@@ -1,4 +1,4 @@
-package com.wmrk.jwtserver;
+package com.wmrk.todo.jwtserver;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

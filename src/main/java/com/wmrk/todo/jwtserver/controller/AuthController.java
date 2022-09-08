@@ -1,11 +1,11 @@
-package com.wmrk.jwtserver.controller;
+package com.wmrk.todo.jwtserver.controller;
 
-import com.wmrk.jwtserver.jwt.JwtResponse;
-import com.wmrk.jwtserver.jwt.RefreshJwtRequest;
-import com.wmrk.jwtserver.exception.AuthException;
-import com.wmrk.jwtserver.service.AuthService;
+import com.wmrk.todo.jwtserver.jwt.JwtResponse;
+import com.wmrk.todo.jwtserver.jwt.RefreshJwtRequest;
+import com.wmrk.todo.jwtserver.exception.AuthException;
+import com.wmrk.todo.jwtserver.service.AuthService;
 import lombok.RequiredArgsConstructor;
-import com.wmrk.jwtserver.jwt.JwtRequest;
+import com.wmrk.todo.jwtserver.jwt.JwtRequest;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;

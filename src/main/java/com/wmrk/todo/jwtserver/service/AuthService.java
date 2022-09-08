@@ -1,14 +1,15 @@
-package com.wmrk.jwtserver.service;
+package com.wmrk.todo.jwtserver.service;
 
-import com.wmrk.jwtserver.exception.AuthException;
+import com.wmrk.todo.jwt.JwtAuthentication;
+import com.wmrk.todo.jwtserver.entity.User;
+import com.wmrk.todo.jwtserver.exception.AuthException;
+import com.wmrk.todo.jwtserver.jwt.JwtRequest;
+import com.wmrk.todo.jwtserver.jwt.JwtResponse;
 import io.jsonwebtoken.Claims;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
-import com.wmrk.jwtserver.jwt.JwtAuthentication;
-import com.wmrk.jwtserver.jwt.JwtRequest;
-import com.wmrk.jwtserver.jwt.JwtResponse;
-import com.wmrk.jwtserver.entity.User;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.HashMap;
@@ -20,12 +21,13 @@ public class AuthService {
 
     private final UserService userService;
     private final Map<String, String> refreshStorage = new HashMap<>();
-    private final JwtProvider jwtProvider;
+    private final ServerJwtProvider jwtProvider;
+    private final PasswordEncoder passwordEncoder;
 
     public JwtResponse login(@NonNull JwtRequest authRequest) throws AuthException {
         final User user = userService.getByLogin(authRequest.getLogin())
                 .orElseThrow(() -> new AuthException("User not found"));
-        if (user.getPassword().equals(authRequest.getPassword())) {
+        if (passwordEncoder.matches(authRequest.getPassword(), user.getPassword())) {
             final String accessToken = jwtProvider.generateAccessToken(user);
             final String refreshToken = jwtProvider.generateRefreshToken(user);
             refreshStorage.put(user.getLogin(), refreshToken);

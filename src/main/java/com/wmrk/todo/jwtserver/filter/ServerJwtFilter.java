@@ -1,8 +1,9 @@
-package com.wmrk.jwtserver.filter;
+package com.wmrk.todo.jwtserver.filter;
 
-import com.wmrk.jwtserver.jwt.JwtAuthentication;
-import com.wmrk.jwtserver.service.JwtProvider;
-import com.wmrk.jwtserver.service.JwtUtils;
+
+import com.wmrk.todo.jwt.JwtAuthentication;
+import com.wmrk.todo.jwt.JwtUtils;
+import com.wmrk.todo.jwtserver.service.ServerJwtProvider;
 import io.jsonwebtoken.Claims;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -21,12 +22,12 @@ import java.io.IOException;
 @Slf4j
 @Component
 @RequiredArgsConstructor
-public class JwtFilter extends GenericFilterBean {
+public class ServerJwtFilter extends GenericFilterBean {
 
     private static final String AUTHORIZATION = "Authorization";
     public static final String BEARER_PREFIX = "Bearer ";
 
-    private final JwtProvider jwtProvider;
+    private final ServerJwtProvider jwtProvider;
 
     @Override
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain fc)

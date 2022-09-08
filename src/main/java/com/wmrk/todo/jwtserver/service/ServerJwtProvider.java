@@ -1,6 +1,6 @@
-package com.wmrk.jwtserver.service;
+package com.wmrk.todo.jwtserver.service;
 
-import com.wmrk.jwtserver.entity.User;
+import com.wmrk.todo.jwtserver.entity.User;
 import io.jsonwebtoken.*;
 import io.jsonwebtoken.io.Decoders;
 import io.jsonwebtoken.security.Keys;
@@ -19,14 +19,14 @@ import java.util.Date;
 
 @Slf4j
 @Component
-public class JwtProvider {
+public class ServerJwtProvider {
 
     private final SecretKey jwtAccessSecret;
     private final SecretKey jwtRefreshSecret;
     private final int jwtAccessExpMinutes;
     private final int jwtRefreshExpDays;
 
-    public JwtProvider(
+    public ServerJwtProvider(
             @Value("${jwt.secret.access}") String jwtAccessSecret,
             @Value("${jwt.secret.refresh}") String jwtRefreshSecret,
             @Value("${jwt.accessExpirationMinutes}") int jwtAccessExpMinutes,
